@@ -9,7 +9,7 @@
   }
   
   .plbutto:hover {
-    background-color: #418f8d;
+    background: linear-gradient(135deg, #418f8d, #68c5b5, #2c3e50);
     color: white;
   }
 

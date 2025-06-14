@@ -97,7 +97,7 @@ const styles = {
   container: {
     textAlign: "center",
     marginTop: "5x",
-    backgroundColor: "#509b8e",
+    backgroundColor: "linear-gradient(135deg, #418f8d, #68c5b5, #2c3e50)",
     padding: "20px",
     borderRadius: "10px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",

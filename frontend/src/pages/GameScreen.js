@@ -41,7 +41,7 @@ const GameScreen = () => {
     useEffect(() => {
         if (questions.length > 0) {
             if (questionIndex === 0 || questionIndex === 2 || questionIndex === 4) {
-                const questionType = questions[questionIndex].type;
+                const questionType = questions[questionIndex].type.toLowerCase();
                 console.log("Question Type:", questionType);
 
                 if (questionType) {
@@ -60,6 +60,12 @@ const GameScreen = () => {
                             videoPath = "";
                     }
                     console.log("Instructional Video Path:", videoPath);
+                    console.log("▶ Instruction Video Debug:", {
+                        index: questionIndex,
+                        type: questions[questionIndex]?.type,
+                        path: videoPath
+                    });
+
                     setInstructionVideoSrc(videoPath);
                     setShowInstructionVideo(true);
                 } else {
@@ -139,10 +145,10 @@ const GameScreen = () => {
     return (
         <div style={styles.container}>
             <h2 style={styles.title}>Game Time! 🎮</h2>
-            <img 
-                src={questions[questionIndex].image} 
-                alt="Game Question" 
-                style={styles.questionImage} 
+            <img
+                src={questions[questionIndex].image}
+                alt="Game Question"
+                style={styles.questionImage}
             />
 
             {/* Render Options */}
@@ -176,8 +182,8 @@ const GameScreen = () => {
             )}
 
             {/* Confirm Button */}
-            <button 
-                onClick={handleConfirm} 
+            <button
+                onClick={handleConfirm}
                 disabled={selectedOption === null}
                 style={styles.confirmButton}
             >
@@ -199,7 +205,7 @@ const GameScreen = () => {
                 <div style={styles.scorePopup}>
                     <h2>Game Over! 🎉</h2>
                     <p>Your Score: {score} / {questions.length}</p>
-                    <button 
+                    <button
                         onClick={handlePlayAgain}
                         style={styles.playAgainButton}
                     >
@@ -215,7 +221,7 @@ const styles = {
     container: {
         textAlign: "center",
         padding: "20px",
-        backgroundColor: "#f0f8ff",
+        backgroundColor: "solid #f0f8ff",
         minHeight: "100vh",
         fontFamily: "consolas",
         fontSize: "22px",
