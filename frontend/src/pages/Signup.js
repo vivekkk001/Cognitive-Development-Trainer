@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+const apiUrl = process.env.BACKEND_URL;
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +13,7 @@ const Signup = () => {
     e.preventDefault();
   
     try {
-      const { data } = await axios.post("http://localhost:5000/api/auth/register", { username, password });
+      const { data } = await axios.post(`${apiUrl}/api/auth/register`, { username, password });
       localStorage.setItem("token", data.token); // Store token
   
       // Redirect to login page after successful signup

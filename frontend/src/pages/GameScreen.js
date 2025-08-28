@@ -29,14 +29,14 @@ const GameScreen = () => {
     const [instructionVideoSrc, setInstructionVideoSrc] = useState("");
     const [gameResults, setGameResults] = useState([]);
     const [showScorePopup, setShowScorePopup] = useState(false);
-
+    const apiUrl = process.env.BACKEND_URL;
     useEffect(() => {
         fetchQuestions();
     }, []);
 
     const fetchQuestions = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/games/questions");
+            const response = await fetch(`${apiUrl}/api/games/questions`);
             const data = await response.json();
             console.log("📥 Data received from API:", data);
             setQuestions(data);
@@ -133,7 +133,7 @@ const GameScreen = () => {
         };
 
         try {
-            const response = await axios.post("http://localhost:5000/api/games/save-session", sessionData);
+            const response = await axios.post(`${apiUrl}/api/games/save-session`, sessionData);
             console.log("Session saved:", response.data);
         } catch (error) {
             console.error("Error saving session:", error);
@@ -150,13 +150,13 @@ const GameScreen = () => {
     }
 
     return (
-        <motion.div 
+        <motion.div
             style={styles.container}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
         >
-            <motion.h2 
+            <motion.h2
                 style={styles.title}
                 initial={{ y: -20 }}
                 animate={{ y: 0 }}
@@ -164,7 +164,7 @@ const GameScreen = () => {
             >
                 Game Time! 🎮
             </motion.h2>
-            
+
             <motion.img
                 src={questions[questionIndex].image}
                 alt="Game Question"
@@ -194,7 +194,7 @@ const GameScreen = () => {
             </div>
 
             {showInstructionVideo && instructionVideoSrc && (
-                <motion.div 
+                <motion.div
                     style={styles.instructionVideoContainer}
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -218,7 +218,7 @@ const GameScreen = () => {
             </motion.button>
 
             {showVideo && (
-                <motion.div 
+                <motion.div
                     style={styles.feedbackVideoContainer}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -232,7 +232,7 @@ const GameScreen = () => {
             )}
 
             {showScorePopup && (
-                <motion.div 
+                <motion.div
                     style={styles.scorePopup}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}

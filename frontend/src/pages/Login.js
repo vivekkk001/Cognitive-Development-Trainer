@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+const apiUrl = process.env.BACKEND_URL;
 const Login = ({ setIsLoggedIn, setShowDashboard, setShowLoginSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +13,7 @@ const Login = ({ setIsLoggedIn, setShowDashboard, setShowLoginSuccess }) => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post("http://localhost:5000/api/auth/login", {
+      const { data } = await axios.post(`${apiUrl}/api/auth/login`, {
         username,
         password,
       });

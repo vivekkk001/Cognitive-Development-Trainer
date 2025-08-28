@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const path = require("path");
 
-dotenv.config();
+require('dotenv').config();
 const app = express();
 
 // Middleware
@@ -35,7 +35,7 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 // Root Route
 app.get("/", (req, res) => {
-  res.send("🚀 The Vito Game Backend is Running!");
+  res.send("🚀Backend is Running!");
 });
 
 // Global Error Handler (Improves Debugging & API Stability)
