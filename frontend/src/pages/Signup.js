@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-const apiUrl = process.env.BACKEND_URL;
+const apiUrl = process.env.REACT_APP_BACKEND_URL;
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

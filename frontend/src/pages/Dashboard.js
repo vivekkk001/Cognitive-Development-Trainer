@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Dashboard.css";
-const apiUrl = process.env.BACKEND_URL;
+const apiUrl = process.env.REACT_APP_BACKEND_URL;
 
 const Dashboard = ({ onClose }) => {
   const [data, setData] = useState(null);

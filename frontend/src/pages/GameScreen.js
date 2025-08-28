@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-
+const apiUrl = process.env.REACT_APP_BACKEND_URL;
 // Add Poppins font import
 const fontLink = document.createElement('link');
 fontLink.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap';
@@ -29,7 +29,7 @@ const GameScreen = () => {
     const [instructionVideoSrc, setInstructionVideoSrc] = useState("");
     const [gameResults, setGameResults] = useState([]);
     const [showScorePopup, setShowScorePopup] = useState(false);
-    const apiUrl = process.env.BACKEND_URL;
+    
     useEffect(() => {
         fetchQuestions();
     }, []);

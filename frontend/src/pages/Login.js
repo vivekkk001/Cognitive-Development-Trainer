@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-const apiUrl = process.env.BACKEND_URL;
+const apiUrl = process.env.REACT_APP_BACKEND_URL;
 const Login = ({ setIsLoggedIn, setShowDashboard, setShowLoginSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
